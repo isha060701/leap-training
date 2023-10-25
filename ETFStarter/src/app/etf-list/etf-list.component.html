@@ -1,0 +1,32 @@
+<h2 style="text-align: center;">ETFs</h2>
+<table id="cars">
+  <thead>
+    <tr>
+      <th>Ticker</th>
+      <th>Fund_Name</th>
+      <th>Issuer</th>
+      <th>AUM_bil</th>
+      <th>Expense_Ration</th>
+      <th>ThreeMoTR</th>
+      <th>Segment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let etf of etfs">
+      <td>{{ etf.Ticker }}</td>
+      <td>{{ etf.Fund_Name }}</td>
+      <td>{{ etf.Issuer }}</td>
+      <td>{{ etf.AUM_bil}}</td>
+      <td>{{ etf.Expense_Ratio }}</td>
+      <td>{{ etf.ThreeMoTR }}</td>
+      <td>{{ etf.Segment }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<nav>
+  <button type="button" (click)="loadAllEtfs()" id="getAllEtfs">Load all Etfs</button>
+  <button type="button" (click)="loadEtfsByFilter('ThreeMoTR')" id="getByThree">Load Cars by ThreeMoTR</button>
+  <button type="button" (click)="loadEtfsByFilter('Expense_Ratio')" id="getByExpense">Load Cars by Expense_Ratio</button>
+  <button type="button" (click)="loadEtfsByFilter('AUM_bil')" id="getByAum">Load Cars by AUM_bil</button>
+</nav>
