@@ -1,0 +1,1032 @@
+2023-10-06 14:46:15.262  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 14:46:16.967  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-06 14:47:17.229 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.latitude, cities.longitude FROM us_cities cities JOIN us_states states ON states.id = cities.id_state WHERE cities.city = ? AND states.state_code = ?
+2023-10-06 14:47:17.343 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Beijing(String), HE(String)
+2023-10-06 14:47:17.419 ERROR --- c.f.weather.services.WeatherServiceImpl  : Error getting latitude and longitude from the database.
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00942: table or view does not exist
+
+### The error may exist in file [D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter\target\classes\com\fidelity\weather\integration\mapper\WeatherMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT cities.latitude,        cities.longitude     FROM us_cities cities     JOIN us_states states        ON states.id = cities.id_state    WHERE cities.city = ?       AND states.state_code = ?
+### Cause: java.sql.SQLSyntaxErrorException: ORA-00942: table or view does not exist
+
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: ORA-00942: table or view does not exist
+
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy2/jdk.proxy2.$Proxy76.getLatitudeAndLongitude(Unknown Source)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl.getLatitudeAndLongitude(WeatherDaoMyBatisImpl.java:28)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$FastClassBySpringCGLIB$$d38cb146.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$EnhancerBySpringCGLIB$$7ae0f639.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.services.WeatherServiceImpl.getLatitudeAndLongitude(WeatherServiceImpl.java:33)
+	at com.fidelity.weather.services.WeatherServiceImpl$$FastClassBySpringCGLIB$$4b7d5b3c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.services.WeatherServiceImpl$$EnhancerBySpringCGLIB$$7a99a3a2.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.restcontroller.WeatherController.getForecast(WeatherController.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLSyntaxErrorException: ORA-00942: table or view does not exist
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:630)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:564)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1231)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:772)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:299)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:512)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:163)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1010)
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1271)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1149)
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1661)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1470)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3761)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:4136)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1014)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at jdk.proxy3/jdk.proxy3.$Proxy102.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 85 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00942: table or view does not exist
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:637)
+	... 123 common frames omitted
+2023-10-06 14:47:17.436 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Beijing, HE): Error getting latitude and longitude from the database.
+2023-10-06 15:04:35.363  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 15:04:37.098  WARN --- ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2023-10-06 15:04:37.151 ERROR --- o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-10-06 15:04:48.008  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 15:04:49.761  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-06 15:05:00.762 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon,cities.city,countries.country_code,countries.region_code FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city={#city} And countries.region_code={#state}
+2023-10-06 15:05:00.873 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: 
+2023-10-06 15:05:00.940 ERROR --- c.f.weather.services.WeatherServiceImpl  : Error getting latitude and longitude from the database.
+org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: Non supported SQL92 token at position: 197
+### The error may exist in file [D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter\target\classes\com\fidelity\weather\integration\mapper\WeatherMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT cities.lat, cities.lon,cities.city,countries.country_code,countries.region_code FROM city cities JOIN country_region countries  ON countries.id = cities.country_region_id WHERE cities.city={#city} And countries.region_code={#state}
+### Cause: java.sql.SQLException: Non supported SQL92 token at position: 197
+; uncategorized SQLException; SQL state [99999]; error code [17034]; Non supported SQL92 token at position: 197; nested exception is java.sql.SQLException: Non supported SQL92 token at position: 197
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy2/jdk.proxy2.$Proxy76.getLatitudeAndLongitude(Unknown Source)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl.getLatitudeAndLongitude(WeatherDaoMyBatisImpl.java:28)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$FastClassBySpringCGLIB$$d38cb146.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$EnhancerBySpringCGLIB$$b25c3fc2.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.services.WeatherServiceImpl.getLatitudeAndLongitude(WeatherServiceImpl.java:33)
+	at com.fidelity.weather.services.WeatherServiceImpl$$FastClassBySpringCGLIB$$4b7d5b3c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.services.WeatherServiceImpl$$EnhancerBySpringCGLIB$$9a6a4e81.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.restcontroller.WeatherController.getForecast(WeatherController.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLException: Non supported SQL92 token at position: 197
+	at oracle.jdbc.driver.OracleSql.handleODBC(OracleSql.java:1514)
+	at oracle.jdbc.driver.OracleSql.parse(OracleSql.java:1406)
+	at oracle.jdbc.driver.OracleSql.getSql(OracleSql.java:336)
+	at oracle.jdbc.driver.OracleSql.getSqlBytes(OracleSql.java:843)
+	at oracle.jdbc.driver.T4CPreparedStatement.initializeOALL8(T4CPreparedStatement.java:391)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:161)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1010)
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1271)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1149)
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1661)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1470)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3761)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:4136)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1014)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at jdk.proxy3/jdk.proxy3.$Proxy102.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 85 common frames omitted
+2023-10-06 15:05:00.944 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Beijing, HE): Error getting latitude and longitude from the database.
+2023-10-06 15:06:02.904  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 15:06:04.713  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-06 15:06:12.982 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city={#city} And countries.region_code={#state}
+2023-10-06 15:06:13.106 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: 
+2023-10-06 15:06:13.179 ERROR --- c.f.weather.services.WeatherServiceImpl  : Error getting latitude and longitude from the database.
+org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: Non supported SQL92 token at position: 140
+### The error may exist in file [D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter\target\classes\com\fidelity\weather\integration\mapper\WeatherMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries  ON countries.id = cities.country_region_id WHERE cities.city={#city} And countries.region_code={#state}
+### Cause: java.sql.SQLException: Non supported SQL92 token at position: 140
+; uncategorized SQLException; SQL state [99999]; error code [17034]; Non supported SQL92 token at position: 140; nested exception is java.sql.SQLException: Non supported SQL92 token at position: 140
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at jdk.proxy2/jdk.proxy2.$Proxy75.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy2/jdk.proxy2.$Proxy76.getLatitudeAndLongitude(Unknown Source)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl.getLatitudeAndLongitude(WeatherDaoMyBatisImpl.java:28)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$FastClassBySpringCGLIB$$d38cb146.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.integration.WeatherDaoMyBatisImpl$$EnhancerBySpringCGLIB$$d330e4c2.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.services.WeatherServiceImpl.getLatitudeAndLongitude(WeatherServiceImpl.java:33)
+	at com.fidelity.weather.services.WeatherServiceImpl$$FastClassBySpringCGLIB$$4b7d5b3c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.fidelity.weather.services.WeatherServiceImpl$$EnhancerBySpringCGLIB$$5e28da21.getLatitudeAndLongitude(<generated>)
+	at com.fidelity.weather.restcontroller.WeatherController.getForecast(WeatherController.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.sql.SQLException: Non supported SQL92 token at position: 140
+	at oracle.jdbc.driver.OracleSql.handleODBC(OracleSql.java:1514)
+	at oracle.jdbc.driver.OracleSql.parse(OracleSql.java:1406)
+	at oracle.jdbc.driver.OracleSql.getSql(OracleSql.java:336)
+	at oracle.jdbc.driver.OracleSql.getSqlBytes(OracleSql.java:843)
+	at oracle.jdbc.driver.T4CPreparedStatement.initializeOALL8(T4CPreparedStatement.java:391)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:161)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1010)
+	at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1271)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1149)
+	at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1661)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1470)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3761)
+	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:4136)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.execute(OraclePreparedStatementWrapper.java:1014)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at jdk.proxy3/jdk.proxy3.$Proxy102.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 85 common frames omitted
+2023-10-06 15:06:13.183 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Beijing, HE): Error getting latitude and longitude from the database.
+2023-10-06 15:07:55.526  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 15:07:57.235  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-06 15:08:04.965 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=?
+2023-10-06 15:08:05.083 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Beijing(String), HE(String)
+2023-10-06 15:08:05.182 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:08:05.186 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(39.9042,116.4074): enter
+2023-10-06 15:14:18.935  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-10-06 15:14:20.661  INFO --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-06 15:14:41.936 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:14:42.052 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Beijing(String), HE(String), CN(String)
+2023-10-06 15:14:42.152 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:14:42.158 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(39.9042,116.4074): enter
+2023-10-06 15:18:09.373  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 6948 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:18:09.375 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:18:09.377  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 15:18:14.892  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 6.127 seconds (JVM running for 7.777)
+2023-10-06 15:18:15.896 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:18:16.086 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:18:16.237 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:18:16.409 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:18:16.414 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 15:18:16.418 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:19:03.709  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 520 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:19:03.717 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:19:03.718  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 15:19:08.934  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.777 seconds (JVM running for 7.491)
+2023-10-06 15:19:09.922 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:19:10.130 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:19:10.282 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:19:10.345 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:19:10.350 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 15:19:10.356 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:39:21.057  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 6028 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:39:21.058 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:39:21.059  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:39:23.930  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.609 seconds (JVM running for 5.206)
+2023-10-06 15:40:24.293 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:40:24.295 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:40:24.297 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:40:24.299 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:40:44.944  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 492 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:40:44.946 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:40:44.947  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:40:47.787  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.564 seconds (JVM running for 5.209)
+2023-10-06 15:40:47.944 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:41:38.304  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 6228 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:41:38.306 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:41:38.307  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:41:41.131  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.54 seconds (JVM running for 5.192)
+2023-10-06 15:41:41.331 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3095,-157.8581): enter
+2023-10-06 15:42:23.704  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 5152 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:42:23.705 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:42:23.706  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:42:26.871  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.92 seconds (JVM running for 5.491)
+2023-10-06 15:42:27.046 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:43:56.129  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 6524 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:43:56.131 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:43:56.132  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:44:02.109  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.684 seconds (JVM running for 8.382)
+2023-10-06 15:44:48.425  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 2840 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:44:48.426 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:44:48.427  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:44:54.063  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.25 seconds (JVM running for 7.867)
+2023-10-06 15:44:55.327 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:44:55.503 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:44:55.664 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:44:55.673 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:44:55.841 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:44:55.842 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:44:55.859 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:44:55.861  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:45:28.178  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 3892 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:45:28.179 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:45:28.181  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:45:33.894  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.324 seconds (JVM running for 7.975)
+2023-10-06 15:45:35.149 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:45:35.422 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:45:35.562 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:45:35.570 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:45:35.716 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:45:35.717 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:45:35.721 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:45:35.724  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:49:24.197  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 8444 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:49:24.198 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:49:24.200  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:49:29.788  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.163 seconds (JVM running for 7.85)
+2023-10-06 15:49:31.010 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:49:31.213 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:49:31.335 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:49:31.344  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:49:31.431 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:49:31.433 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:49:31.451 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:49:31.453 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:49:31.545 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:49:31.546 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:49:31.551 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:49:31.553 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:51:12.332  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 2468 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:51:12.334 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:51:12.336  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:51:18.071  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.42 seconds (JVM running for 8.223)
+2023-10-06 15:51:19.454 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:51:19.654 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:51:19.789 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:51:19.798  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:51:19.889 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:51:19.890 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:51:19.903 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:51:19.906 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:51:19.977 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:51:19.978 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:51:19.982 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:51:19.983 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:52:15.341  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 9036 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:52:15.346 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:52:15.349  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:52:20.986  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.21 seconds (JVM running for 7.857)
+2023-10-06 15:52:22.234 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:22.418 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:52:22.544 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:52:22.552  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:52:22.641 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:22.643 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:52:22.657 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:52:22.658 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:52:22.731 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:22.732 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:52:22.738 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:52:22.739 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:52:36.815  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 4796 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:52:36.817 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:52:36.819  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:52:42.376  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.148 seconds (JVM running for 7.94)
+2023-10-06 15:52:43.610 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:43.794 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:52:43.909 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:52:43.915  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:52:44.006 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:44.007 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:52:44.023 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:52:44.027 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:52:44.099 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:44.100 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:52:44.104 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:52:44.106 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:52:44.135 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:52:44.136 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: null(String), HI(String), US(String)
+2023-10-06 15:52:44.139 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:52:44.140  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: null, HI not found
+2023-10-06 15:53:41.490  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 1324 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:53:41.496 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:53:41.498  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 15:53:47.260  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.358 seconds (JVM running for 7.943)
+2023-10-06 15:53:48.462 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:53:48.614 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 15:53:48.728 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 15:53:48.735  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 15:53:48.819 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:53:48.820 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:53:48.835 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:53:48.838 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:53:48.908 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 15:53:48.909 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 15:53:48.913 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 15:53:48.914 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:57:56.539  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 6200 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:57:56.541 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:57:56.542  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:57:59.322  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.545 seconds (JVM running for 5.158)
+2023-10-06 15:57:59.520 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:57:59.726  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 15:57:59.757  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 15:57:59.784  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 15:59:16.286  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 10008 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 15:59:16.287 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 15:59:16.288  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 15:59:19.106  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.533 seconds (JVM running for 5.219)
+2023-10-06 15:59:19.280 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 15:59:19.480 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 15:59:19.508  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 15:59:19.535 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(null,null): enter
+2023-10-06 16:00:07.426  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 768 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:00:07.428 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:00:07.433  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:00:10.210  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.475 seconds (JVM running for 5.112)
+2023-10-06 16:00:10.344 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:00:10.510 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:00:10.532  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:00:10.544 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(null,null): enter
+2023-10-06 16:05:25.925  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 8776 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:05:25.930 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:05:25.930  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:05:31.022  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.674 seconds (JVM running for 7.365)
+2023-10-06 16:05:32.052 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:05:32.231 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:05:32.374 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:05:32.485 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:05:32.487 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:05:32.489 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:06:21.457  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 2468 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:06:21.459 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:06:21.460  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:06:26.622  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.787 seconds (JVM running for 7.45)
+2023-10-06 16:06:27.631 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:27.790 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:06:27.943 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:06:28.027 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:28.030 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:06:28.032 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:06:48.481  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 5304 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:06:48.484 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:06:48.485  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:06:53.537  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.545 seconds (JVM running for 7.158)
+2023-10-06 16:06:54.527 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:54.702 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:06:54.849 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:06:54.945 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:54.963 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:06:54.966 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:06:55.067  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 5304 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:06:55.068 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:06:55.069  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:06:57.239  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.219 seconds (JVM running for 10.86)
+2023-10-06 16:06:57.640 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:57.644 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:06:57.648 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:06:57.653  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:06:57.728 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:57.729 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:06:57.733 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:06:57.735 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:06:57.823 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:06:57.824 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:06:57.827 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:06:57.829 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:06:58.457  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 5304 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:06:58.457 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:06:58.457  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:06:58.969  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.547 seconds (JVM running for 12.589)
+2023-10-06 16:06:58.996 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:06:59.106  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:06:59.142 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:12:56.965  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 6200 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:12:56.966 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:12:56.967  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:12:59.742  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 3.47 seconds (JVM running for 5.189)
+2023-10-06 16:12:59.917 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:13:00.134  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:13:00.165 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:13:21.714  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 10104 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:13:21.716 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:13:21.717  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:13:27.042  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.845 seconds (JVM running for 7.572)
+2023-10-06 16:13:28.242 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:13:28.485 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:13:28.623 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:13:28.714 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:13:28.731 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:13:28.737 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:13:28.836  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 10104 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:13:28.837 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:13:28.837  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:13:30.953  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.159 seconds (JVM running for 11.483)
+2023-10-06 16:13:31.361 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:13:31.362 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:13:31.365 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:13:31.368  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:13:31.433 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:13:31.437 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:13:31.442 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:13:31.444 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:13:31.530 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:13:31.530 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:13:31.533 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:13:31.534 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:13:32.141  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 10104 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:13:32.141 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:13:32.142  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:13:32.733  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.628 seconds (JVM running for 13.263)
+2023-10-06 16:13:32.762 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:13:32.873  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:13:32.909 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:14:23.632  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 10140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:14:23.634 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:14:23.635  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:14:28.817  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.838 seconds (JVM running for 7.533)
+2023-10-06 16:14:29.836 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:14:30.003 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:14:30.173 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:14:30.287 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:14:30.289 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:14:30.293 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:14:30.408  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 10140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:14:30.411 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:14:30.413  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:14:32.521  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.165 seconds (JVM running for 11.237)
+2023-10-06 16:14:32.923 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:14:32.925 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:14:32.929 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:14:32.932  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:14:33.014 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:14:33.016 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:14:33.022 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:14:33.024 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:14:33.093 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:14:33.094 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:14:33.097 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:14:33.099 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:14:33.746  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 10140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:14:33.746 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:14:33.746  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:14:34.347  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.645 seconds (JVM running for 13.063)
+2023-10-06 16:14:34.373 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:14:34.488  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:14:34.511 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:19:57.004  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 548 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:19:57.006 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:19:57.007  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:20:02.069  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.663 seconds (JVM running for 7.33)
+2023-10-06 16:20:03.103 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:20:03.296 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:20:03.436 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:20:03.533 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:20:03.541 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:20:03.547 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:20:03.641  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 548 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:20:03.642 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:20:03.643  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:20:05.826  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.224 seconds (JVM running for 11.086)
+2023-10-06 16:20:06.260 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:20:06.264 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:20:06.269 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:20:06.275  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:20:06.367 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:20:06.369 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:20:06.373 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:20:06.374 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:20:06.445 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:20:06.446 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:20:06.450 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:20:06.452 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:20:07.264  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 548 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:20:07.264 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:20:07.265  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:20:07.872  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.697 seconds (JVM running for 13.132)
+2023-10-06 16:20:07.896 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:20:08.007  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:20:08.034 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:21:26.909  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 4916 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:21:26.911 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:21:26.912  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:21:32.215  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.819 seconds (JVM running for 7.671)
+2023-10-06 16:21:33.217 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:21:33.392 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:21:33.573 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:21:33.649 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:21:33.650 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:21:33.653 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:21:33.758  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 4916 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:21:33.759 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:21:33.760  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:21:35.809  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.098 seconds (JVM running for 11.265)
+2023-10-06 16:21:36.239 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:21:36.242 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:21:36.247 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:21:36.252  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:21:36.427 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:21:36.429 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:21:36.433 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:21:36.434 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:21:36.461 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:21:36.463 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:21:36.466 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:21:36.468 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:21:37.079  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 4916 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:21:37.080 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:21:37.080  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:21:37.738  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.694 seconds (JVM running for 13.194)
+2023-10-06 16:21:37.778 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:21:38.082  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:21:38.117 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:22:11.525  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 8748 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:22:11.530 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:22:11.532  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:22:17.365  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.376 seconds (JVM running for 8.135)
+2023-10-06 16:22:18.620 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:22:18.799 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:22:18.943 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:22:18.950  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:22:19.044 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:22:19.045 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: null(String), HI(String), US(String)
+2023-10-06 16:22:19.048 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:22:19.050  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: null, HI not found
+2023-10-06 16:22:19.080 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:22:19.084 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:22:19.105 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:22:19.108 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:22:19.191 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:22:19.195 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:22:19.201 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:22:19.204 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:23:42.473  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 9472 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:23:42.478 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:23:42.479  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:23:48.255  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.417 seconds (JVM running for 8.048)
+2023-10-06 16:23:49.567 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:23:49.760 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:23:49.875 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:23:49.882  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:23:50.074 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:23:50.076 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:23:50.091 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:23:50.094 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:23:50.131 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:23:50.132 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:23:50.134 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:23:50.135 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:24:33.388  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 392 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:24:33.393 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:24:33.398  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:24:39.209  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.439 seconds (JVM running for 8.039)
+2023-10-06 16:24:40.499 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:24:40.706 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:24:40.824 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:24:40.831  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:24:41.009 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:24:41.011 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:24:41.025 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:24:41.027 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:24:41.065 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:24:41.066 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:24:41.069 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:24:41.072 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:24:58.827  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 9184 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:24:58.829 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:24:58.831  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:25:04.556  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.33 seconds (JVM running for 7.956)
+2023-10-06 16:25:05.811 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:25:05.989 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:25:06.110 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:25:06.118  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:25:06.294 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:25:06.296 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:25:06.310 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:25:06.311 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:25:06.341 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:25:06.342 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:25:06.345 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:25:06.347 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:30:17.867  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 7260 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:30:17.868 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:30:17.869  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:30:23.615  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.34 seconds (JVM running for 7.968)
+2023-10-06 16:30:25.102 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:30:25.276 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:30:25.418 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:30:25.426 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:30:25.484 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:30:25.485 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:30:25.488 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:30:25.489  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:30:25.511 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:30:25.513 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:30:25.516 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:30:25.518 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:31:01.208  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 4988 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:31:01.209 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:31:01.210  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:31:07.360  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 6.774 seconds (JVM running for 8.408)
+2023-10-06 16:31:08.836 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:31:09.041 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:31:09.206 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:31:09.212 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:31:09.266 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:31:09.267 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:31:09.270 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:31:09.271  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:31:09.296 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:31:09.298 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:31:09.301 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:31:09.303 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:32:31.571  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 6380 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:32:31.572 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:32:31.573  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:32:36.767  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.734 seconds (JVM running for 7.531)
+2023-10-06 16:32:37.781 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:32:38.006 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:32:38.204 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:32:38.311 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:32:38.314 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:32:38.317 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:32:38.422  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 6380 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:32:38.422 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:32:38.423  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:32:40.645  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.266 seconds (JVM running for 11.409)
+2023-10-06 16:32:41.079 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:32:41.080 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:32:41.084 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:32:41.088 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:32:41.191 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:32:41.196 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:32:41.201 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:32:41.203  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:32:41.221 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:32:41.221 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:32:41.224 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:32:41.227 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:32:41.870  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 6380 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:32:41.872 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:32:41.872  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:32:42.451  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.616 seconds (JVM running for 13.216)
+2023-10-06 16:32:42.475 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:32:42.586  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:32:42.610 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:33:26.145  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 3140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:33:26.147 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:33:26.148  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:33:31.380  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.782 seconds (JVM running for 7.404)
+2023-10-06 16:33:32.365 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:33:32.544 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:33:32.693 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:33:32.774 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:33:32.779 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:33:32.785 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:33:32.927  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 3140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:33:32.930 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:33:32.933  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:33:35.081  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.212 seconds (JVM running for 11.105)
+2023-10-06 16:33:35.515 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:33:35.517 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:33:35.521 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:33:35.525 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:33:35.651 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:33:35.655 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:33:35.660 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:33:35.662  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:33:35.679 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:33:35.680 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:33:35.683 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:33:35.685 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:33:36.371  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 3140 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:33:36.372 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:33:36.372  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:33:36.956  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.623 seconds (JVM running for 12.979)
+2023-10-06 16:33:36.986 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:33:37.116  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:33:37.153 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
+2023-10-06 16:34:37.453  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Starting MyBatisWeatherDaoIntegrationTest using Java 17.0.7 on a720442win with PID 9940 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:34:37.455 DEBUG --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:34:37.456  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : The following 1 profile is active: "test"
+2023-10-06 16:34:42.581  INFO --- c.f.w.i.MyBatisWeatherDaoIntegrationTest : Started MyBatisWeatherDaoIntegrationTest in 5.654 seconds (JVM running for 7.274)
+2023-10-06 16:34:43.694 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:34:43.895 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:34:44.053 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:34:44.143 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:34:44.151 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Nowhere(String), NY(String), US(String)
+2023-10-06 16:34:44.164 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:34:44.298  INFO --- c.f.w.r.WeatherControllerE2eTest         : Starting WeatherControllerE2eTest using Java 17.0.7 on a720442win with PID 9940 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:34:44.300 DEBUG --- c.f.w.r.WeatherControllerE2eTest         : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:34:44.300  INFO --- c.f.w.r.WeatherControllerE2eTest         : The following 1 profile is active: "test"
+2023-10-06 16:34:46.304  INFO --- c.f.w.r.WeatherControllerE2eTest         : Started WeatherControllerE2eTest in 2.069 seconds (JVM running for 10.997)
+2023-10-06 16:34:46.690 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:34:46.691 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:34:46.696 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:34:46.699 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:34:46.829 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:34:46.833 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Funkytown(String), HI(String), US(String)
+2023-10-06 16:34:46.838 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 0
+2023-10-06 16:34:46.840  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Funkytown, HI not found
+2023-10-06 16:34:46.857 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==>  Preparing: SELECT cities.lat, cities.lon FROM city cities JOIN country_region countries ON countries.id = cities.country_region_id WHERE cities.city=? And countries.region_code=? And countries.country_code=?
+2023-10-06 16:34:46.857 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : ==> Parameters: Honolulu(String), HI(String), US(String)
+2023-10-06 16:34:46.859 DEBUG --- c.f.w.i.m.W.getLatitudeAndLongitude      : <==      Total: 1
+2023-10-06 16:34:46.860 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:34:47.517  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Starting WeatherControllerWebLayerTest using Java 17.0.7 on a720442win with PID 9940 (started by a720442 in D:\Assessment  Restful starter files\RESTfulAssessmentStarter\RESTfulAssessmentStarter)
+2023-10-06 16:34:47.517 DEBUG --- c.f.w.r.WeatherControllerWebLayerTest    : Running with Spring Boot v2.6.7, Spring v5.3.19
+2023-10-06 16:34:47.519  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : The following 1 profile is active: "test"
+2023-10-06 16:34:48.059  INFO --- c.f.w.r.WeatherControllerWebLayerTest    : Started WeatherControllerWebLayerTest in 0.591 seconds (JVM running for 12.75)
+2023-10-06 16:34:48.083 DEBUG --- c.f.w.restcontroller.WeatherController   : getForecast(21.3099,-157.8581): enter
+2023-10-06 16:34:48.200  WARN --- c.f.w.restcontroller.WeatherController   : getForecast: Honolulu, HI not found
+2023-10-06 16:34:48.227 ERROR --- c.f.w.restcontroller.WeatherController   : cannot getForecast(Honolulu, HI): null
