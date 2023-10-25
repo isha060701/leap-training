@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- The namespace defines the location of the Java interface. -->
+<!-- The operation names here must match the method names in the interface. -->
+<mapper namespace="com.fidelity.integration.mapper.WarehouseMapper">
+
+	<!-- Widget Operations -->
+
+	<resultMap id="WidgetMap" type="Widget">
+		<id column="id" property="id"/>
+		<result column="description" property="description"/>
+		<result column="price" property="price"/>
+		<result column="gears" property="gears"/>
+		<result column="sprockets" property="sprockets"/>
+	</resultMap>
+
+	<select id="getAllWidgets" resultMap="WidgetMap">
+		select id, description, price, gears, sprockets
+		from widgets
+		order by id
+	</select>
+
+	<select id="getWidget" parameterType="int" resultMap="WidgetMap">
+		select id, description, price, gears, sprockets
+		from widgets
+		where id = #{id}
+		order by id
+	</select>
+
+	<delete id="deleteWidget" parameterType="int">
+		delete from widgets
+		where id = #{id}
+	</delete>
+
+	<update id="updateWidget" parameterType="Widget">
+		update widgets
+		set
+			description = #{description},
+			price = #{price},
+			gears = #{gears},
+			sprockets = #{sprockets}
+		where id = #{id}
+	</update>
+
+	<insert id="insertWidget" parameterType="Widget">
+		insert into widgets
+			(id, description, price, gears, sprockets)
+		values
+			(#{id}, #{description}, #{price}, #{gears}, #{sprockets})
+	</insert>
+
+	<!-- Gadget Operations -->
+	
+	<resultMap id="GadgetMap" type="Gadget">
+		<id column="id" property="id"/>
+		<result column="description" property="description"/>
+		<result column="price" property="price"/>
+		<result column="cylinders" property="cylinders"/>
+	</resultMap>
+
+	<select id="getAllGadgets" resultMap="GadgetMap">
+		select id, description, price, cylinders
+		from gadgets
+		order by id
+	</select>
+
+	<select id="getGadget" parameterType="int" resultMap="GadgetMap">
+		select id, description, price, cylinders
+		from gadgets
+		where id = #{id}
+		order by id
+	</select>
+
+	<delete id="deleteGadget" parameterType="int">
+		delete from gadgets
+		where id = #{id}
+	</delete>
+
+	<update id="updateGadget" parameterType="Gadget">
+		update gadgets
+		set
+			description = #{description},
+			price = #{price},
+			cylinders = #{cylinders}
+		where id = #{id}
+	</update>
+
+	<insert id="insertGadget" parameterType="Gadget">
+		insert into gadgets
+			(id, description, price, cylinders)
+		values
+			(#{id}, #{description}, #{price}, #{cylinders})
+	</insert>
+
+</mapper>
+
