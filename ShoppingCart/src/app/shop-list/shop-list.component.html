@@ -1,0 +1,28 @@
+<h2 style="text-align: center;">Shopping Cart Items</h2>
+<table id="cars">
+  <thead>
+    <tr>
+      <th>Cost</th>
+      <th>Description</th>
+      <th>Id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shop of shops">
+      <td>{{ shop.cost }}</td>
+      <td>{{ shop.description }}</td>
+      <td>{{ shop.id }}</td>
+      <td>{{ shop.name }}</td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="addShop()">Add</button>
+<p>{{shopCount | json}}</p>
+
+<!-- <nav>
+  <button type="button" (click)="loadAllCars()" id="getAllCars">Load all Cars</button>
+  <button type="button" (click)="loadCarsByFilter('price')" id="getAllCarsByPrice">Load Cars by Price</button>
+  <button type="button" (click)="loadCarsByFilter('doors')" id="getAllCarsByDoors">Load Cars by Number of Doors</button>
+  <button type="button" (click)="loadCarsByFilter('year')" id="getAllCarsByYear">Load Cars by Year</button>
+</nav> -->
