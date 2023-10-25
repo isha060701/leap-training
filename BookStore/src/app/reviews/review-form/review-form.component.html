@@ -1,0 +1,16 @@
+<p>review-form works! {{ this.bookId }}</p>
+<form #revForm="ngForm" (ngSubmit)="submit(revForm)">
+  <label
+    >Review:
+    <input
+    required
+      type="text"
+      name="content"
+      #content="ngModel"
+      [(ngModel)]="review.content"
+    />
+  </label>
+  <button type="submit" [disabled]="!revForm.form.valid">Add Review</button>
+</form>
+{{ review.bookId + " " + review.content }}
+<div *ngIf="!content.valid">Review must have content</div>

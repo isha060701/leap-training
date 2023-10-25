@@ -1,0 +1,14 @@
+body{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+}
+h1{
+    color: brown;
+}
+footer{
+    margin-top: auto;
+}
+button{
+    margin-left: 10px;
+}

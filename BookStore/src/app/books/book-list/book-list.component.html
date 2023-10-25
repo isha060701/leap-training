@@ -1,0 +1,24 @@
+<h2>Books</h2>
+<table id="books">
+  <thead>
+    <tr>
+      <th>Book Title</th>
+      <th>Book Author</th>
+      <th>Book Cover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>
+        <a [routerLink]="['/reviews', book.bookId]">{{ book.title }}</a>
+      </td>
+      <td>{{ book.author }}</td>
+      <td>
+        <img
+          src="{{ book.cover | noImage }}"
+          alt="{{ book.title + ' book cover' }}"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

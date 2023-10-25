@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+    <style>
+        .text { font: 35px sans-serif; fill: #555; text-anchor: middle }
+    </style>
+    <circle cx="150" cy="150" r="145" stroke="#aaaaaa" fill="white" stroke-width="5" />
+    <text x="50%" y="140" class="text">NO IMAGE</text>
+    <text x="50%" y="180" class="text">AVAILABLE</text>
+</svg>

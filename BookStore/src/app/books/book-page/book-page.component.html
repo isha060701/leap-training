@@ -1,0 +1,4 @@
+<h2>Books</h2>
+<app-book-form (createBook)="addBook($event)"></app-book-form>
+<app-book-list [books]="books"></app-book-list>
+<div *ngIf="errorMessage" class="error"> {{errorMessage}} </div>
