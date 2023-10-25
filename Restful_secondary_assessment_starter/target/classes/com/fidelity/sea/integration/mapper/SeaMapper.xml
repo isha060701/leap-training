@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fidelity.india.secondary.integration.mapper.SeaMapper">
+
+	<resultMap id="SeaMap" type="Sea">
+		<result column="PORT_NAME" property="port_name"/>
+	</resultMap>
+
+	
+	<select id="getPortName" resultMap="SeaMap">
+		SELECT sea_ports.port_name
+FROM sea_ports 
+JOIN vessels  
+ON vessels.vessel_port = sea_ports.id
+WHERE vessels.vessel_name=#{vessel};
+	</select>
+
+</mapper>
