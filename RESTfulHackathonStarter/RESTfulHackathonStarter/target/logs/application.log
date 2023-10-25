@@ -1,0 +1,289 @@
+12:49:47.994 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsServiceApplication using Java 17.0.7 on a720442win with PID 5384 (D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+12:49:48.002 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+12:49:48.002 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+12:49:49.520 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.initialize: Tomcat initialized with port(s): 8080 (http)
+12:49:50.142 WARN  o.s.c.support.AbstractApplicationContext.refresh: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'presidentsMyBatisDaoImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'presidentsMapper' defined in file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionTemplate' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionTemplate' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+12:49:50.193 ERROR o.springframework.boot.SpringApplication.reportFailure: Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'presidentsMyBatisDaoImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'presidentsMapper' defined in file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionTemplate' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionTemplate' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:659)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.roifmr.presidents.PresidentsServiceApplication.main(PresidentsServiceApplication.java:22)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'presidentsMapper' defined in file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionTemplate' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionTemplate' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1707)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1452)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionTemplate' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionTemplate' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 33 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 57 common frames omitted
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:613)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:491)
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:633)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:188)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$776c452f.CGLIB$sqlSessionFactory$1(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$776c452f$$FastClassBySpringCGLIB$$df73ce30.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$776c452f.sqlSessionFactory(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 58 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes\com\roifmr\presidents\integration\mapper\PresidentsMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:95)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:611)
+	... 71 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:263)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:254)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:246)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:119)
+	... 73 common frames omitted
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'President'.  Cause: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120)
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149)
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116)
+	... 77 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Cannot find class: President
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:196)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116)
+	... 79 common frames omitted
+12:57:14.553 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsServiceApplication using Java 17.0.7 on a720442win with PID 5220 (D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+12:57:14.557 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+12:57:14.558 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+12:57:15.998 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.initialize: Tomcat initialized with port(s): 8080 (http)
+12:57:17.619 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.start: Tomcat started on port(s): 8080 (http) with context path ''
+12:57:17.638 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsServiceApplication in 3.585 seconds (JVM running for 4.393)
+12:58:12.563 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+12:58:12.572 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+12:58:12.593 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+12:58:12.699 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+12:58:12.793 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+12:58:23.612 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 2
+12:58:23.613 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(2)
+12:58:23.618 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+12:58:23.620 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 2(Integer)
+12:58:23.633 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:23:52.062 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsServiceApplication using Java 17.0.7 on a720442win with PID 844 (D:\RESTfulHackathonStarter\RESTfulHackathonStarter\target\classes started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:23:52.067 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:23:52.067 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:23:53.625 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.initialize: Tomcat initialized with port(s): 8080 (http)
+13:23:55.332 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.start: Tomcat started on port(s): 8080 (http) with context path ''
+13:23:55.352 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsServiceApplication in 3.866 seconds (JVM running for 4.856)
+13:24:04.401 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 2
+13:24:04.420 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(2)
+13:24:04.456 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:24:04.576 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 2(Integer)
+13:24:04.680 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:24:08.656 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+13:24:08.658 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:24:08.658 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:24:08.659 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:24:08.667 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:25:09.365 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 1
+13:25:09.367 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(1)
+13:25:09.368 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:25:09.369 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 1(Integer)
+13:25:09.371 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:33:50.941 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+13:33:50.943 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:33:50.944 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:33:50.945 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:33:50.952 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:34:46.110 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsMyBatisDaoIntegrationTest using Java 17.0.7 on a720442win with PID 3676 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:34:46.113 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:34:46.115 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:34:51.095 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsMyBatisDaoIntegrationTest in 5.507 seconds (JVM running for 7.316)
+13:34:52.084 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:34:52.119 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:34:52.297 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:34:52.438 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:40:06.131 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsMyBatisDaoIntegrationTest using Java 17.0.7 on a720442win with PID 7124 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:40:06.135 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:40:06.138 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:40:10.845 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsMyBatisDaoIntegrationTest in 5.256 seconds (JVM running for 7.014)
+13:40:11.917 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:40:11.948 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:40:12.010 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:40:12.130 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+13:40:12.175 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:40:12.176 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:40:12.177 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:40:12.192 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:45:36.295 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsMyBatisDaoIntegrationTest using Java 17.0.7 on a720442win with PID 3204 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:45:36.299 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:45:36.300 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:45:41.065 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsMyBatisDaoIntegrationTest in 5.327 seconds (JVM running for 6.912)
+13:45:41.996 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(1)
+13:45:42.033 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:45:42.221 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 1(Integer)
+13:45:42.368 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:45:42.432 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:45:42.437 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:45:42.441 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:45:42.450 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+13:45:42.484 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:45:42.485 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:45:42.486 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:45:42.510 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:47:15.084 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsMyBatisDaoIntegrationTest using Java 17.0.7 on a720442win with PID 4556 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:47:15.087 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:47:15.089 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:47:19.725 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsMyBatisDaoIntegrationTest in 5.168 seconds (JVM running for 6.777)
+13:47:20.660 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(1)
+13:47:20.692 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:47:20.882 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 1(Integer)
+13:47:21.018 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:47:21.067 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:47:21.072 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:47:21.074 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:47:21.080 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+13:47:21.121 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(5)
+13:47:21.122 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:47:21.134 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 5(Integer)
+13:47:21.145 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:47:21.192 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:47:21.198 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:47:21.199 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:47:21.219 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+13:47:48.434 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsMyBatisDaoIntegrationTest using Java 17.0.7 on a720442win with PID 7040 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+13:47:48.437 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+13:47:48.439 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+13:47:53.396 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsMyBatisDaoIntegrationTest in 5.515 seconds (JVM running for 7.093)
+13:47:54.288 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(1)
+13:47:54.327 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:47:54.570 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 1(Integer)
+13:47:54.720 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+13:47:54.764 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:47:54.766 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:47:54.767 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:47:54.773 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+13:47:54.796 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(12)
+13:47:54.797 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+13:47:54.798 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 12(Integer)
+13:47:54.817 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+13:47:54.843 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+13:47:54.845 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+13:47:54.846 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+13:47:54.873 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+14:07:08.943 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsControllerWebLayerTest using Java 17.0.7 on a720442win with PID 8760 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+14:07:08.946 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+14:07:08.946 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+14:07:11.436 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsControllerWebLayerTest in 3.187 seconds (JVM running for 4.765)
+14:07:11.588 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:11.693 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president -1
+14:07:11.715 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 99
+14:07:11.769 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:11.856 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:11.869 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 2
+14:07:11.882 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 5
+14:07:11.885 ERROR c.r.p.r.PresidentsController.queryForPresidentBiography: Exception while getting bio for president 5: java.lang.RuntimeException: mock exception
+14:07:11.898 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:11.900 ERROR c.r.p.r.PresidentsController.queryForAllPresidents: Exception while getting all presidents: java.lang.RuntimeException: mock exception
+14:07:55.154 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsControllerWebLayerTest using Java 17.0.7 on a720442win with PID 7388 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+14:07:55.157 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+14:07:55.158 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+14:07:57.579 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsControllerWebLayerTest in 3.095 seconds (JVM running for 4.628)
+14:07:57.727 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:57.835 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president -1
+14:07:57.860 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 99
+14:07:57.913 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:58.001 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:58.011 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 2
+14:07:58.037 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 5
+14:07:58.042 ERROR c.r.p.r.PresidentsController.queryForPresidentBiography: Exception while getting bio for president 5: java.lang.RuntimeException: mock exception
+14:07:58.057 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:07:58.058 ERROR c.r.p.r.PresidentsController.queryForAllPresidents: Exception while getting all presidents: java.lang.RuntimeException: mock exception
+14:10:21.523 INFO  o.springframework.boot.StartupInfoLogger.logStarting: Starting PresidentsControllerE2eTest using Java 17.0.7 on a720442win with PID 2448 (started by a720442 in D:\RESTfulHackathonStarter\RESTfulHackathonStarter)
+14:10:21.527 DEBUG o.springframework.boot.StartupInfoLogger.logStarting: Running with Spring Boot v2.6.7, Spring v5.3.19
+14:10:21.529 INFO  o.springframework.boot.SpringApplication.logStartupProfileInfo: The following 1 profile is active: "prod"
+14:10:23.763 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.initialize: Tomcat initialized with port(s): 0 (http)
+14:10:26.906 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer.start: Tomcat started on port(s): 59159 (http) with context path ''
+14:10:26.945 INFO  o.springframework.boot.StartupInfoLogger.logStarted: Started PresidentsControllerE2eTest in 5.977 seconds (JVM running for 7.831)
+14:10:28.138 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 99
+14:10:28.170 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(99)
+14:10:28.211 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+14:10:28.377 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 99(Integer)
+14:10:28.503 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0
+14:10:29.015 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:10:29.016 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+14:10:29.018 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+14:10:29.019 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+14:10:29.037 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 10
+14:10:29.166 DEBUG c.r.p.r.PresidentsController.queryForPresidentBiography: getting bio for president 10
+14:10:29.168 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForPresidentBiography: queryForPresidentsBiography(10)
+14:10:29.170 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT bio FROM presidents WHERE presidentid = ?
+14:10:29.172 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 10(Integer)
+14:10:29.186 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 1
+14:10:29.276 DEBUG c.r.p.r.PresidentsController.queryForAllPresidents: enter
+14:10:29.277 DEBUG c.r.p.i.PresidentsMyBatisDaoImpl.queryForAllPresidents: queryForAllPresidents()
+14:10:29.278 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==>  Preparing: SELECT presidentid, firstname, lastname, startyear, endyear, imagepath, bio FROM presidents ORDER BY presidentid
+14:10:29.278 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: ==> Parameters: 
+14:10:29.284 DEBUG o.a.ibatis.logging.jdbc.BaseJdbcLogger.debug: <==      Total: 0

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.roifmr.presidents.integration.mapper.PresidentsMapper">
+
+	<resultMap type="President" id="PresidentMap">
+		<id     property="id"		    column="presidentid" />
+		<result property="firstName"	column="firstname" />
+		<result property="lastName"		column="lastname" />
+		<result property="firstYear"	column="startyear" />
+		<result property="lastYear"		column="endyear" />
+		<result property="image"		column="imagepath" />
+		<result property="biography"	column="bio" />
+	</resultMap>
+	
+	<select id="getAllPresidents" resultMap="PresidentMap">
+		SELECT presidentid,
+			   firstname,
+			   lastname,
+			   startyear,
+			   endyear,
+			   imagepath,
+			   bio
+		FROM   presidents 
+		ORDER BY
+			   presidentid
+	</select>
+	
+	<select id="getBiographyById" parameterType="int" resultType="String">
+		SELECT  bio
+		FROM    presidents 
+		WHERE   presidentid = #{id}
+	</select>
+</mapper>
